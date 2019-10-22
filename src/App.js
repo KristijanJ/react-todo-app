@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ToDoItems from "./components/ToDoItems";
 import AddItem from "./components/AddItem";
+import "./App.css";
 
 export default class App extends Component {
   constructor() {
@@ -31,8 +32,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="main">
-        <h1>ToDo App</h1>
+        <h1 className="title">ToDo App</h1>
         <ToDoItems items={this.state.items} removeItem={this.removeItem} />
+        <hr className="hr-divider" />
         <AddItem addItem={this.addItem} />
       </div>
     );
