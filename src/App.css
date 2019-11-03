@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,400,600&display=swap");
+
 :root {
   --main-color: #0d3163;
   --secondary-color: #49c7c9;
@@ -11,6 +13,7 @@
 
 body {
   background: #eee;
+  font-family: "Poppins", sans-serif;
 }
 
 .main {
@@ -54,7 +57,7 @@ body {
 }
 
 .action-item-span i {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .action-item-span:hover {
@@ -68,6 +71,7 @@ body {
 
 form {
   width: 100%;
+  position: relative;
 }
 
 input {
@@ -104,4 +108,24 @@ button:hover {
 .hr-divider {
   width: 90%;
   margin-bottom: 1rem;
+  background: var(--main-color);
+}
+
+/* ANIMATIONS */
+
+.addItem {
+  position: relative;
+  animation-name: addItem;
+  animation-fill-mode: forwards;
+  animation-duration: 500ms;
+  top: 60px;
+}
+
+@keyframes addItem {
+  0% {
+    top: 60px;
+  }
+  100% {
+    top: 0;
+  }
 }

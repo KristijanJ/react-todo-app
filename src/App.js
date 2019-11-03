@@ -86,7 +86,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="main">
-        <h1 className="title">ToDo App</h1>
+        <h1 className="title">TODO APP</h1>
         <ToDoItems
           items={this.state.items}
           removeItem={this.removeItem}
