@@ -1,12 +1,27 @@
 import React from "react";
 
-export default function Item({ item, index, removeItem }) {
+export default function Item({
+  item,
+  index,
+  completed,
+  removeItem,
+  completeItem
+}) {
   return (
     <div className="item">
-      <span className="item-span">{item} </span>
-      <span className="remove-item-span" onClick={() => removeItem(index)}>
-        <i className="far fa-window-close"></i>
-      </span>
+      {completed ? (
+        <span className="item-span completed">{item} </span>
+      ) : (
+        <span className="item-span">{item} </span>
+      )}
+      <div className="action-buttons">
+        <span className="action-item-span" onClick={() => completeItem(index)}>
+          <i className="fas fa-check"></i>
+        </span>
+        <span className="action-item-span" onClick={() => removeItem(index)}>
+          <i className="fas fa-times"></i>
+        </span>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,8 @@
+:root {
+  --main-color: #0d3163;
+  --secondary-color: #49c7c9;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,20 +15,21 @@ body {
 
 .main {
   max-width: 600px;
-  margin: 100px auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #fff;
   padding: 2rem;
+  box-shadow: 3px 3px 10px #999;
 }
 
 .title {
   width: 100%;
   padding: 1rem 0;
   text-align: center;
-  background: #333;
+  background: var(--main-color);
   color: #fff;
 }
 
@@ -33,20 +39,31 @@ body {
 
 .item {
   width: 100%;
-  padding: 1rem 2rem;
-  box-shadow: 1px 1px 2px #ccc;
+  padding: 0.5rem 2rem;
   margin: 1rem auto;
   display: flex;
   justify-content: space-between;
+  /* box-shadow: 1px 1px 2px #999; */
+  /* border-top: 2px solid var(--secondary-color); */
+  border-radius: 2px;
 }
 
-.item .remove-item-span {
-  color: #999;
+.item .action-item-span {
+  color: #666;
+  padding: 0px 5px;
 }
 
-.item .remove-item-span:hover {
-  color: #333;
+.action-item-span i {
+  font-size: 12px;
+}
+
+.action-item-span:hover {
+  color: var(--main-color);
   cursor: pointer;
+}
+
+.item-span.completed {
+  text-decoration: line-through;
 }
 
 form {
@@ -57,9 +74,16 @@ input {
   width: 100%;
   padding: 1rem 2rem;
   font-size: 1rem;
-  box-shadow: 1px 1px 2px #999;
   border: none;
   outline: none;
+  /* box-shadow: 1px 1px 2px #999; */
+  /* border-top: 2px solid #999; */
+  border-radius: 2px;
+}
+
+input:focus {
+  box-shadow: 1px 1px 2px #999;
+  /* border-top: 2px solid var(--secondary-color); */
 }
 
 button {
@@ -68,9 +92,13 @@ button {
   font-size: 1.5rem;
   margin-top: 1rem;
   border: none;
-  background: #333;
+  background: var(--main-color);
   color: #fff;
   font-weight: bold;
+}
+
+button:hover {
+  background: var(--main-color);
 }
 
 .hr-divider {

@@ -7,13 +7,39 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      items: ["To do item 1", "To do item 2", "To do item 3"],
-      newItem: ""
+      items: [
+        {
+          id: 1,
+          value: "Take the dog for a walk",
+          completed: false
+        },
+        {
+          id: 2,
+          value: "Study for the exam",
+          completed: false
+        },
+        {
+          id: 3,
+          value: "Buy new tires for the car",
+          completed: false
+        }
+      ],
+      newItem: {
+        id: "",
+        value: "",
+        completed: false
+      }
     };
   }
 
   handleInputChange = e => {
-    this.setState({ newItem: e.target.value });
+    this.setState({
+      newItem: {
+        id: Date.now(),
+        value: e.target.value,
+        completed: false
+      }
+    });
   };
 
   handleSubmit = e => {
@@ -24,22 +50,36 @@ export default class App extends Component {
   addItem = (newItem, e) => {
     let items = [...this.state.items];
 
-    if (newItem === "") {
+    if (newItem.value === "") {
       alert("Please enter an Item");
-    } else if (items.includes(newItem)) {
-      alert("Item already exists");
     } else {
       items.push(newItem);
       this.setState({
         items,
-        newItem: ""
+        newItem: {
+          id: "",
+          value: "",
+          completed: false
+        }
       });
       e.target.children[0].value = "";
     }
   };
 
   removeItem = index => {
-    let items = [...this.state.items].filter(item => item !== index);
+    let items = [...this.state.items].filter(item => item.id !== index);
+    this.setState({ items });
+  };
+
+  completeItem = index => {
+    let items = [...this.state.items];
+    items.forEach(item => {
+      if (item.id === index) {
+        item.completed === false
+          ? (item.completed = true)
+          : (item.completed = false);
+      }
+    });
     this.setState({ items });
   };
 
@@ -47,7 +87,11 @@ export default class App extends Component {
     return (
       <div className="main">
         <h1 className="title">ToDo App</h1>
-        <ToDoItems items={this.state.items} removeItem={this.removeItem} />
+        <ToDoItems
+          items={this.state.items}
+          removeItem={this.removeItem}
+          completeItem={this.completeItem}
+        />
         <hr className="hr-divider" />
         <AddItem
           addItem={this.addItem}
